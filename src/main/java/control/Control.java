@@ -1,4 +1,4 @@
-package Control;
+package control;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,14 +22,15 @@ public class Control {
             double firstNumber = Double.parseDouble(scanner.next());
             String operationSign = scanner.next();
             double secondNumber = Double.parseDouble(scanner.next());
-            double answer = 0;
+            double result;
             switch (operationSign) {
-                case "+" -> answer = firstNumber + secondNumber;
-                case "-" -> answer = firstNumber - secondNumber;
-                case "/" -> answer = firstNumber / secondNumber;
-                case "*" -> answer = firstNumber * secondNumber;
+                case "+" -> result = firstNumber + secondNumber;
+                case "-" -> result = firstNumber - secondNumber;
+                case "/" -> result = firstNumber / secondNumber;
+                case "*" -> result = firstNumber * secondNumber;
+                default -> throw new IllegalArgumentException("Znak operacj = " + operationSign);
             }
-            String content = Control.printAnswer(firstNumber, operationSign, secondNumber, answer);
+            String content = Control.printAnswer(firstNumber, operationSign, secondNumber, result);
             Control.writeToFile(path, content);
             lines++;
         }
